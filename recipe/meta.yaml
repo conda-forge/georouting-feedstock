@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/georouting-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/georouting-{{ version }}.tar.gz
   sha256: b6807dcfa55a1667ed360225d2bffd137f91e8fb5ed29f4b8c9e7e5389d7cb4f
 
 build:
@@ -14,15 +14,15 @@ build:
     - georouting=georouting.cli:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pytest-runner
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - python-igraph
     - osmnx
     - polyline
@@ -40,6 +40,7 @@ test:
     - georouting --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/wybert/georouting
