@@ -1,5 +1,5 @@
 {% set name = "georouting" %}
-{% set version = "0.0.8" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/georouting-{{ version }}.tar.gz
-  sha256: b6807dcfa55a1667ed360225d2bffd137f91e8fb5ed29f4b8c9e7e5389d7cb4f
+  sha256: 6a06613e5fd8bbb23fcab61c54c17f66832ac50c20da96f709504de1a5abbc0b
 
 build:
   entry_points:
     - georouting=georouting.cli:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
